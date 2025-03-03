@@ -49,7 +49,6 @@ class Elyamani_Slider
         $this->version = ELYAMANI_SLIDER_VERSION;
 
         $this->load_dependencies();
-        $this->set_locale();
         $this->define_admin_hooks();
         $this->define_public_hooks();
     }
@@ -68,11 +67,6 @@ class Elyamani_Slider
          */
         require_once ELYAMANI_SLIDER_PATH . 'includes/class-elyamani-slider-loader.php';
 
-        /**
-         * The class responsible for defining internationalization functionality
-         * of the plugin.
-         */
-        require_once ELYAMANI_SLIDER_PATH . 'includes/class-elyamani-slider-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
@@ -98,17 +92,6 @@ class Elyamani_Slider
         $this->loader = new Elyamani_Slider_Loader();
     }
 
-    /**
-     * Define the locale for this plugin for internationalization.
-     *
-     * @since    1.0.0
-     * @access   private
-     */
-    private function set_locale()
-    {
-        $plugin_i18n = new Elyamani_Slider_i18n();
-        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
-    }
 
     /**
      * Register all of the hooks related to the admin area functionality
@@ -145,7 +128,16 @@ class Elyamani_Slider
         $this->loader->add_action('add_meta_boxes', $plugin_admin, 'add_meta_boxes');
         $this->loader->add_action('save_post', $plugin_admin, 'save_meta_boxes', 10, 2);
     }
+    private function define_hooks()
+    {
+        $this->loader->add_filter('elementor/cpt_support', $this, 'add_elementor_support');
+    }
 
+    public function add_elementor_support($post_types)
+    {
+        $post_types[] = 'slide';
+        return $post_types;
+    }
     /**
      * Register all of the hooks related to the public-facing functionality
      * of the plugin.

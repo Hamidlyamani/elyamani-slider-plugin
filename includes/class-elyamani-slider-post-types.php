@@ -39,16 +39,17 @@ class Elyamani_Slider_Post_Types
         $args = array(
             'labels' => $labels,
             'public' => true,
+            'show_in_rest' => true,
             'publicly_queryable' => true,
             'show_ui' => true,
             'show_in_menu' => 'elyamani-slider',
             'query_var' => true,
             'rewrite' => array('slug' => 'slide'),
+            'supports' => array('title', 'editor', 'thumbnail', 'elementor'),
             'capability_type' => 'post',
             'has_archive' => false,
             'hierarchical' => false,
             'menu_position' => null,
-            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
             'menu_icon' => 'dashicons-images-alt2',
         );
 
