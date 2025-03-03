@@ -1,0 +1,98 @@
+/**
+ * Public styles for Elyamani Slider
+ */
+
+/* Slider Container */
+.elyamani-slider {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Slide */
+.elyamani-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.elyamani-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption */
+.elyamani-slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.elyamani-slide-caption h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.elyamani-slide-caption p {
+  margin: 0 0 15px;
+}
+
+.elyamani-slide-caption .button {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #0073aa;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.elyamani-slide-caption .button:hover {
+  background: #005177;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .elyamani-slide-caption {
+    position: relative;
+    background: #333;
+  }
+
+  .elyamani-slide-caption h3 {
+    font-size: 20px;
+  }
+}
+
+/* Custom Slick Overrides */
+.elyamani-slider .slick-prev,
+.elyamani-slider .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+.elyamani-slider .slick-prev {
+  left: 10px;
+}
+
+.elyamani-slider .slick-next {
+  right: 10px;
+}
+
+.elyamani-slider .slick-dots {
+  bottom: 10px;
+}
+
+.elyamani-slider .slick-dots li button:before {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.elyamani-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+}
